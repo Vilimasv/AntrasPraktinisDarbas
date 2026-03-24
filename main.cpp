@@ -11,6 +11,7 @@ int main() {
     int mokiniuKiekis = 0;
 
     while (programIsRunning) {
+
         int pasirinkimas;
 
         cout << "\n--- MENIU ---\n";
@@ -32,6 +33,7 @@ int main() {
         // 1. PRIDĖTI MOKINĮ
         // -----------------------------
         if (pasirinkimas == 1) {
+
             if (mokiniuKiekis >= 100) {
                 cout << "Pasiektas maksimalus mokiniu skaicius\n";
                 continue;
@@ -54,5 +56,53 @@ int main() {
             mokiniuKiekis++;
             cout << "Mokinys pridetas!\n";
         }
-    }
-}
+
+        // -----------------------------
+        // 2. RODYTI VISUS
+        // -----------------------------
+        else if (pasirinkimas == 2) {
+
+            if (mokiniuKiekis == 0) {
+                cout << "Nera mokiniu\n";
+                continue;
+            }
+
+            for (int i = 0; i < mokiniuKiekis; i++) {
+                cout << i + 1 << ". " << vardai[i] << ": ";
+
+                for (int j = 0; j < pazymiuKiekis[i]; j++) {
+                    cout << pazymiai[i][j] << " ";
+                }
+
+                cout << endl;
+            }
+        }
+
+        // -----------------------------
+        // 3. RODYTI VIENĄ
+        // -----------------------------
+        else if (pasirinkimas == 3) {
+
+            string vardas;
+            cout << "Iveskite mokinio varda: ";
+            cin >> vardas;
+
+            bool rastas = false;
+
+            for (int i = 0; i < mokiniuKiekis; i++) {
+                if (vardai[i] == vardas) {
+
+                    cout << vardai[i] << ": ";
+
+                    for (int j = 0; j < pazymiuKiekis[i]; j++) {
+                        cout << pazymiai[i][j] << " ";
+                    }
+
+                    cout << endl;
+                    rastas = true;
+                    break;
+                }
+            }
+
+            if (!rastas)
+                cout << "Mokinys nerastas\n";
