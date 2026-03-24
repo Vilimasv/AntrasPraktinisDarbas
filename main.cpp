@@ -1,3 +1,8 @@
+
+Vilimas <vilimasvv@gmail.com>
+2026-03-17 12:56 (prieš 7 dienas)
+skirta aš
+
 #include <iostream>
 using namespace std;
 
@@ -106,3 +111,42 @@ int main() {
 
             if (!rastas)
                 cout << "Mokinys nerastas\n";
+        }
+
+        // -----------------------------
+        // 4. ATNAUJINTI PAŽYMĮ
+        // -----------------------------
+        else if (pasirinkimas == 4) {
+
+            string vardas;
+            cout << "Iveskite mokinio varda: ";
+            cin >> vardas;
+
+            bool rastas = false;
+
+            for (int i = 0; i < mokiniuKiekis; i++) {
+                if (vardai[i] == vardas) {
+
+                    int nr;
+                    cout << "Kuri pazymi norite keisti (1,2,...): ";
+                    cin >> nr;
+
+                    if (nr < 1 || nr > pazymiuKiekis[i]) {
+                        cout << "Blogas numeris\n";
+                        rastas = true;
+                        break;
+                    }
+
+                    cout << "Iveskite nauja pazymi: ";
+                    cin >> pazymiai[i][nr - 1];
+
+                    cout << "Pazymys atnaujintas!\n";
+                    rastas = true;
+                    break;
+                }
+            }
+
+            if (!rastas)
+                cout << "Mokinys nerastas\n";
+        }
+
