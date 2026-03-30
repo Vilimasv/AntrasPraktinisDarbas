@@ -1,8 +1,3 @@
-
-Vilimas <vilimasvv@gmail.com>
-2026-03-17 12:56 (prieš 7 dienas)
-skirta aš
-
 #include <iostream>
 using namespace std;
 
@@ -150,3 +145,44 @@ int main() {
                 cout << "Mokinys nerastas\n";
         }
 
+        // -----------------------------
+        // 5. PAŠALINTI MOKINĮ
+        // -----------------------------
+        else if (pasirinkimas == 5) {
+
+            string vardas;
+            cout << "Iveskite mokinio varda: ";
+            cin >> vardas;
+
+            bool rastas = false;
+
+            for (int i = 0; i < mokiniuKiekis; i++) {
+                if (vardai[i] == vardas) {
+
+                    for (int j = i; j < mokiniuKiekis - 1; j++) {
+                        vardai[j] = vardai[j + 1];
+                        pazymiuKiekis[j] = pazymiuKiekis[j + 1];
+
+                        for (int k = 0; k < 10; k++) {
+                            pazymiai[j][k] = pazymiai[j + 1][k];
+                        }
+                    }
+
+                    mokiniuKiekis--;
+                    cout << "Mokinys pasalintas!\n";
+                    rastas = true;
+                    break;
+                }
+            }
+
+            if (!rastas)
+                cout << "Mokinys nerastas\n";
+        }
+
+        else {
+            cout << "Neteisingas pasirinkimas\n";
+        }
+    }
+
+    return 0;
+}
